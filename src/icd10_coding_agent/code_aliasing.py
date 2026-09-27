@@ -67,15 +67,15 @@ def validate_aliases(aliases: Iterable[Alias], corpus: Corpus) -> None:
 
 
 def _mapping_to_alias(mapping: Mapping[str, Any], index: int) -> Alias:
-    short_form = optional_string(mapping.get("short_form"))
-    target_code = optional_string(mapping.get("target_code"))
-    expanded_name = optional_string(mapping.get("expanded_name"))
+    short_form = optional_string(mapping.get("acronym"))
+    target_code = optional_string(mapping.get("code"))
+    expanded_name = optional_string(mapping.get("name"))
     missing = [
         name
         for name, value in (
-            ("short_form", short_form),
-            ("target_code", target_code),
-            ("expanded_name", expanded_name),
+            ("acronym", short_form),
+            ("code", target_code),
+            ("name", expanded_name),
         )
         if not value
     ]

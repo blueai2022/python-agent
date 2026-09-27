@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "icd10-coding-agent"
+version = "0.1.0"
+description = "ICD-10 medical coding assistant (Python rewrite)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "openai>=1",
+    "typer",
+    "pydantic>=2",
+    "pydantic-settings",
+    "sqlite-vec",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+]
+
+[project.scripts]
+icd10 = "icd10_coding_agent.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
